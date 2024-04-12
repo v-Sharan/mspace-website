@@ -9,7 +9,7 @@ const scaleVariants = {
     scale: [0, 1],
     opacity: [0, 1],
     transition: {
-      duration: 1,
+      duration: 0.5,
       ease: "easeInOut",
     },
   },
@@ -18,32 +18,15 @@ const scaleVariants = {
 const Header = () => (
   <div className="app__header app__flex">
     <motion.div
-      whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-      transition={{ duration: 0.5 }}
-      className="app__header-info"
+      variants={scaleVariants}
+      whileInView={scaleVariants.whileInView}
+      className="app__header--circles"
     >
-      <div className="app__header-badge">
-        <div className="badge-cmp app__flex">
-          <span>👋</span>
-          <div style={{ marginLeft: 20 }}>
-            <p className="p-text">Hello,Welcome to</p>
-            <h1 className="head-text">Mspace Drone Technology</h1>
-          </div>
+      {[images.api, images.mobile, images.cpp].map((circle, index) => (
+        <div className="circle-cmp app__flex" key={`circle-${index}`}>
+          <img src={circle} alt="profile_bg" style={{ borderRadius: 10 }} />
         </div>
-
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Software Development</p>
-        </div>
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Drone Light Show</p>
-        </div>
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Swarm Automation</p>
-        </div>
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Artificial intelligence</p>
-        </div>
-      </div>
+      ))}
     </motion.div>
 
     <motion.div
@@ -51,14 +34,29 @@ const Header = () => (
       transition={{ duration: 0.5, delayChildren: 0.5 }}
       className="app__header-img"
     >
-      {/* <img src={images.profile} alt="profile_bg" />
-      <motion.img
-        whileInView={{ scale: [0, 1] }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        src={images.circle}
-        alt="profile_circle"
-        className="overlay_circle"
-      /> */}
+      <motion.div
+        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        transition={{ duration: 0.5 }}
+        className="app__header-ani"
+      >
+        <div className="app__header-badge">
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Software Development</p>
+          </div>
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Drone Light Show</p>
+          </div>
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Swarm Automation</p>
+          </div>
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Artificial intelligence</p>
+          </div>
+          <div className="tag-cmp app__flex">
+            <p className="p-text">Application Development</p>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
 
     <motion.div

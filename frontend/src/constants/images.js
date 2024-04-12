@@ -36,8 +36,10 @@ import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 import qgcs from "../assets/qgcs.png";
 import blender from "../assets/blender.jpg";
+import drone from "../assets/image.png";
 
 export default {
+  drone,
   qgcs,
   email,
   mobile,
